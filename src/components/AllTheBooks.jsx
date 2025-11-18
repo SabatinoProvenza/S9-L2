@@ -8,7 +8,7 @@ function AllTheBooks() {
     <Container className="py-4">
       <Row className="g-4">
         {books.map((libro) => (
-          <Col key={libro.asin} sm={12} md={4} lg={3}>
+          <Col key={libro.asin} xs={12} sm={6} md={4} lg={3}>
             <Card style={{ height: "100%" }}>
               <Card.Img
                 variant="top"
