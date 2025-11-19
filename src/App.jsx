@@ -3,9 +3,10 @@ import "./App.css"
 import MyNav from "./components/MyNav"
 import MyFooter from "./components/MyFooter"
 import Welcome from "./components/Welcome"
-import AllTheBooks from "./components/AllTheBooks"
-import SingleBook from "./components/SingleBook"
-
+//import AllTheBooks from "./components/AllTheBooks"
+//import SingleBook from "./components/SingleBook"
+import BookList from "./components/BookList"
+import books from "./scifi.json"
 // const libro = {
 //   asin: "1940026091",
 //   title: "Pandemic (The Extinction Files, Book 1)",
@@ -19,8 +20,9 @@ function App() {
     <>
       <MyNav />
       <Welcome />
-      {/* <SingleBook img={libro.img} title={libro.title} /> */}
-      <AllTheBooks />
+      <BookList books={books} />
+      {/* <SingleBook book ={libro} /> */}
+      {/* <AllTheBooks /> */}
       <MyFooter />
     </>
   )
