@@ -1,12 +1,13 @@
 import { Component } from "react"
-import ListGroup from "react-bootstrap/ListGroup"
+import CommentsList from "./CommentsList"
+import AddComment from "./AddComment"
 
 class CommentArea extends Component {
   state = {
     comments: [],
   }
 
-  comments = () => {
+  takeComments = () => {
     fetch(
       `https://striveschool-api.herokuapp.com/api/comments/${this.props.asin}`,
       {
@@ -20,36 +21,27 @@ class CommentArea extends Component {
         if (response.ok) {
           return response.json()
         } else {
-          throw new Error("la chiamata non è ok: " + response.status)
+          throw new Error(response.status)
         }
       })
-      .then((data) => {
-        this.setState({ comments: data })
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+      .then((data) => this.setState({ comments: data }))
+
+      .catch((err) => console.log(err))
   }
 
   componentDidMount() {
-    this.comments()
+    this.takeComments()
   }
 
   render() {
-    const { comments } = this.state
-
     return (
-      <ListGroup className="mt-3">
-        {comments.length === 0 && (
-          <ListGroup.Item>Nessun commento presente</ListGroup.Item>
-        )}
-
-        {comments.map((comment) => (
-          <ListGroup.Item key={comment._id}>
-            <strong>{comment.rate}/5</strong> – {comment.comment}
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
+      <>
+        <CommentsList comments={this.state.comments} />
+        <AddComment
+          asin={this.props.asin}
+          refreshComments={this.takeComments}
+        />
+      </>
     )
   }
 }

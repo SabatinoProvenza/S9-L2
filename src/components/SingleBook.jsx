@@ -15,7 +15,7 @@ class SingleBook extends Component {
       <>
         <Card
           style={{
-            // height: "100%",
+            //height: "100%",
             cursor: "pointer",
             border: this.state.selected
               ? "2px solid #ff0000ff"
@@ -37,11 +37,12 @@ class SingleBook extends Component {
             <Button variant="primary" className="align-self-start">
               Acquista
             </Button>
-            {this.state.selected && (
-              <CommentArea asin={book.asin} key={book.asin} />
-            )}
           </Card.Body>
         </Card>
+
+        {this.state.selected && (
+          <CommentArea asin={book.asin} key={book.asin} />
+        )}
       </>
     )
   }
