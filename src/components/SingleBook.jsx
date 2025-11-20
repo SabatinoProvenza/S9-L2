@@ -15,7 +15,7 @@ class SingleBook extends Component {
       <>
         <Card
           style={{
-            //height: "100%",
+            height: "35rem",
             cursor: "pointer",
             border: this.state.selected
               ? "2px solid #ff0000ff"
