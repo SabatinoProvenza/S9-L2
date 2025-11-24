@@ -26,12 +26,18 @@ class AddComment extends Component {
     })
       .then((response) => {
         if (response.ok) {
-          return response.json()
+          // aggiorna lista commenti
+          this.props.refreshComments()
+
+          // reset form
+          this.setState({
+            comment: "",
+            rate: "1",
+          })
         } else {
           throw new Error(response.status)
         }
       })
-
       .catch((err) => console.log(err))
   }
 

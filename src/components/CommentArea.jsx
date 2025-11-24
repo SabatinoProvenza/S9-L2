@@ -25,7 +25,6 @@ class CommentArea extends Component {
         }
       })
       .then((data) => this.setState({ comments: data }))
-
       .catch((err) => console.log(err))
   }
 
@@ -33,7 +32,20 @@ class CommentArea extends Component {
     this.takeComments()
   }
 
+  componentDidUpdate(prevProps) {
+    // se l'asin cambia, rifaccio la fetch
+    if (prevProps.asin !== this.props.asin) {
+      this.takeComments()
+    }
+  }
+
   render() {
+    if (!this.props.asin) {
+      return (
+        <p className="text-muted">Seleziona un libro per vedere i commenti</p>
+      )
+    }
+
     return (
       <>
         <CommentsList comments={this.state.comments} />
