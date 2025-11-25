@@ -34,7 +34,11 @@ const BookList = function ({ books }) {
                   book={book}
                   isSelected={selectedAsin === book.asin} // confronto asin
                   onSelect={
-                    () => setSelectedAsin(book.asin) // salvo asin nello stato
+                    () =>
+                      setSelectedAsin(
+                        selectedAsin === book.asin ? null : book.asin
+                      )
+                    // salvo asin nello stato
                   }
                 />
               </Col>
