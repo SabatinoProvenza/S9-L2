@@ -27,7 +27,7 @@ const BookList = function ({ books }) {
             </Col>
           </Row>
 
-          <Row className="g-4">
+          <Row className="g-4 mx-5 mx-sm-0">
             {filteredBooks.map((book) => (
               <Col key={book.asin} xs={12} sm={12} md={6} lg={4}>
                 <SingleBook

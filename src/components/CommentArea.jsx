@@ -24,15 +24,13 @@ const CommentArea = function ({ asin }) {
   }
 
   useEffect(() => {
+    if (!asin) {
+      setComments([])
+      return
+    }
     takeComments()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [asin])
-
-  if (!asin) {
-    return (
-      <p className="text-muted">Seleziona un libro per vedere i commenti</p>
-    )
-  }
 
   return (
     <>
